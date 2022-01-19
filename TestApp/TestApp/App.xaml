@@ -17,7 +17,7 @@
         </Style>
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="Medium" />
-            <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource AppPrimaryColor}"/>
             <Setter Property="TextColor" Value="{StaticResource SecondaryColor}" />
             <Setter Property="CornerRadius" Value="5" />
         </Style>

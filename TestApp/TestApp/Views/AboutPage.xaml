@@ -5,9 +5,14 @@
     x:Class="TestApp.Views.AboutPage"
     Title="About">
     <Grid RowDefinitions="Auto,*">
-        <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64"
-               BackgroundColor="{OnPlatform iOS=LightSlateGray, Android=#2196F3}" />
-        <StackLayout Grid.Row="1" Margin="20" Spacing="20">
+        <Image Source="xamarin_logo.png"
+               VerticalOptions="Center"
+               HeightRequest="64"
+               Opacity="0.85"
+               BackgroundColor="{StaticResource AppPrimaryColor}" />
+        <StackLayout Grid.Row="1"
+                     Margin="20"
+                     Spacing="20">
             <Label FontSize="22">
                 <Label.FormattedText>
                     <FormattedString>

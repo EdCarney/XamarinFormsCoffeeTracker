@@ -4,6 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:TestApp.Views"
     x:Class="TestApp.AppShell">
+
+    <Shell.Resources>
+        <Style x:Key="BaseStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="{StaticResource AppPrimaryColor}" />
+            <Setter Property="Shell.ForegroundColor" Value="{StaticResource SecondaryColor}" />
+            <Setter Property="Shell.TitleColor" Value="{StaticResource SecondaryColor}" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF" />
+        </Style>
+        <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+    </Shell.Resources>
+
     <TabBar>
         <ShellContent Title="Notes" Icon="icon_feed.png"
                       ContentTemplate="{DataTemplate views:NotesPage}" />

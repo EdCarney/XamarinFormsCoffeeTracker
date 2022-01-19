@@ -136,4 +136,9 @@
       <Name>TestApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_about.png" />
+    <BundleResource Include="Resources\icon_feed.png" />
+    <BundleResource Include="Resources\xamarin_logo.png" />
+  </ItemGroup>
 </Project>
