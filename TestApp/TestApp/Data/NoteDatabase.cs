@@ -19,7 +19,7 @@ namespace TestApp.Data
 		public async Task<List<Note>> GetNotesAsync()
         {
 			return await database.Table<Note>()
-				.OrderBy(n => n.Date)
+				.OrderByDescending(n => n.Date)
 				.ToListAsync();
         }
 
