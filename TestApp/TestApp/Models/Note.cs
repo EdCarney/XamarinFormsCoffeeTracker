@@ -10,9 +10,9 @@ namespace TestApp.Models
 
         public DateTime Date { get; set; }
 
-        public double DoseGrams { get; set; }
-        public double ExtractGrams { get; set; }
-        public double ExtractTimeSec { get; set; }
+        public string DoseGrams { get; set; }
+        public string ExtractGrams { get; set; }
+        public string ExtractTimeSec { get; set; }
         public string Coffee { get; set; }
         public string Text { get; set; }
 	}
