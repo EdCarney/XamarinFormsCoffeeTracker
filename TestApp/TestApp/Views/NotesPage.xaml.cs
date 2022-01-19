@@ -9,8 +9,6 @@ namespace TestApp.Views
 {	
 	public partial class NotesPage : ContentPage
 	{
-		private readonly string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "notes.txt");
-
 		public NotesPage()
 		{
 			InitializeComponent();

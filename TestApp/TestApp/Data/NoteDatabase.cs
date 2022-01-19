@@ -14,6 +14,7 @@ namespace TestApp.Data
 		{
 			database = new SQLiteAsyncConnection(dbPath);
 			database.CreateTableAsync<Note>().Wait();
+			database.CreateTableAsync<Coffee>().Wait();
 		}
 
 		public async Task<List<Note>> GetNotesAsync()
@@ -46,6 +47,37 @@ namespace TestApp.Data
         {
 			return await database.DeleteAsync(note);
         }
+
+		public async Task<List<Coffee>> GetCoffeesAsync()
+		{
+			return await database.Table<Coffee>()
+				.OrderByDescending(c => c.Company)
+				.ToListAsync();
+		}
+
+		public async Task<Coffee> GetCoffeeAsync(int id)
+		{
+			return await database.Table<Coffee>()
+				.Where(c => c.ID == id)
+				.FirstOrDefaultAsync();
+		}
+
+		public async Task<int> SaveCoffeeAsync(Coffee coffee)
+		{
+			if (coffee.ID != 0)
+			{
+				return await database.UpdateAsync(coffee);
+			}
+			else
+			{
+				return await database.InsertAsync(coffee);
+			}
+		}
+
+		public async Task<int> DeleteCoffeeAsync(Coffee coffee)
+		{
+			return await database.DeleteAsync(coffee);
+		}
 	}
 }
 

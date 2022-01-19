@@ -16,7 +16,7 @@ namespace TestApp
             {
                 if (_database == null)
                 {
-                    return new NoteDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Notes.db3"));
+                    _database = new NoteDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Notes.db3"));
                 }
                 return _database;
             }

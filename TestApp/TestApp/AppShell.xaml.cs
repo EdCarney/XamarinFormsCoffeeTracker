@@ -11,6 +11,7 @@ namespace TestApp
 		{
 			InitializeComponent();
 			Routing.RegisterRoute(nameof(NoteEntryPage), typeof(NoteEntryPage));
+			Routing.RegisterRoute(nameof(CoffeeEntryPage), typeof(CoffeeEntryPage));
 		}
 	}
 }

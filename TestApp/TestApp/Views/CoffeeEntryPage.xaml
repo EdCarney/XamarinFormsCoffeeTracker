@@ -2,8 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="TestApp.Views.NoteEntryPage"
-    Title="Shot Log Entry">
+    x:Class="TestApp.Views.CoffeeEntryPage"
+    Title="Coffee Entry">
 
     <ContentPage.Resources>
         <Style TargetType="{x:Type Editor}">
@@ -18,50 +18,48 @@
 
     <StackLayout Margin="{StaticResource PageMargin}">
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Coffee        "
+            <Label Text="Company   "
                    FontAttributes="Bold"
                    FontSize="Small"
                    HeightRequest="40"
                    VerticalTextAlignment="Center"/>
             <Entry Grid.Column="1"
-                   Text="{Binding Coffee}"
+                   Text="{Binding Company}"
                    HeightRequest="40"/>
         </Grid>
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Dose (g)     "
+            <Label Text="Name          "
                    FontAttributes="Bold"
                    FontSize="Small"
                    HeightRequest="40"
                    VerticalTextAlignment="Center"/>
             <Entry Grid.Column="1"
-                   Keyboard="Numeric"
-                   Text="{Binding DoseGrams}"
+                   Text="{Binding Name}"
                    HeightRequest="40"/>
         </Grid>
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Time (s)      "
+            <Label Text="Roast Style"
                    FontAttributes="Bold"
                    FontSize="Small"
                    HeightRequest="40"
                    VerticalTextAlignment="Center"/>
             <Entry Grid.Column="1"
-                   Keyboard="Numeric"
-                   Text="{Binding ExtractTimeSec}"
+                   Text="{Binding RoastStyle}"
                    HeightRequest="40"/>
         </Grid>
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Amount (g)"
+            <Label Text="Roast Date "
                    FontAttributes="Bold"
                    FontSize="Small"
                    HeightRequest="40"
                    VerticalTextAlignment="Center"/>
-            <Entry Grid.Column="1"
-                   Keyboard="Numeric"
-                   Text="{Binding ExtractGrams}"
-                   HeightRequest="40"/>
+            <DatePicker Grid.Column="1"
+                        Date="{Binding RoastDate}"
+                        Format="dd MMM yyyy"
+                        HeightRequest="40"/>
         </Grid>
         <Editor Placeholder="Additional notes..."
-                Text="{Binding Text}"
+                Text="{Binding Notes}"
                 HeightRequest="100" />
         <Grid ColumnDefinitions="*,*">
             <Button Text="Save"

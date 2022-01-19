@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Threading.Tasks;
 using TestApp.Models;
 using Xamarin.Forms;
 
@@ -11,10 +11,7 @@ namespace TestApp.Views
 	{
         public string ItemId
         {
-            set
-            {
-                LoadNote(value);
-            }
+            set => LoadNote(value);
         }
 
         public NoteEntryPage()
@@ -23,7 +20,7 @@ namespace TestApp.Views
             BindingContext = new Note();
 		}
 
-		private async void LoadNote(string itemId)
+		private async Task LoadNote(string itemId)
         {
             try
             {

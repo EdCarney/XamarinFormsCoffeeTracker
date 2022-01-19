@@ -16,8 +16,10 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Notes" Icon="icon_feed.png"
+        <ShellContent Title="Log" Icon="icon_feed.png"
                       ContentTemplate="{DataTemplate views:NotesPage}" />
+        <ShellContent Title="Coffee" Icon="icon_feed.png"
+                      ContentTemplate="{DataTemplate views:CoffeesPage}" />
         <ShellContent Title="About" Icon="icon_about.png"
                       ContentTemplate="{DataTemplate views:AboutPage}" />
     </TabBar>
