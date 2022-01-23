@@ -23,9 +23,15 @@
                    FontSize="Small"
                    HeightRequest="40"
                    VerticalTextAlignment="Center"/>
-            <Entry Grid.Column="1"
-                   Text="{Binding Coffee}"
-                   HeightRequest="40"/>
+            <Picker Grid.Column="1"
+                    x:Name="coffeePicker"
+                    Title="Select coffee..."
+                    TitleColor="{StaticResource TertiaryColor}"
+                    ItemsSource="{Binding CoffeeOptions}"
+                    ItemDisplayBinding="{Binding DisplayName}"
+                    SelectedItem="{Binding SelectedCoffee}"
+                    HeightRequest="40">
+            </Picker>
         </Grid>
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
             <Label Text="Dose (g)     "
@@ -36,6 +42,8 @@
             <Entry Grid.Column="1"
                    Keyboard="Numeric"
                    Text="{Binding DoseGrams}"
+                   Placeholder="Dose amount in grams..."
+                   PlaceholderColor="{StaticResource TertiaryColor}"
                    HeightRequest="40"/>
         </Grid>
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
@@ -46,6 +54,8 @@
                    VerticalTextAlignment="Center"/>
             <Entry Grid.Column="1"
                    Keyboard="Numeric"
+                   Placeholder="Extraction time in sec..."
+                   PlaceholderColor="{StaticResource TertiaryColor}"
                    Text="{Binding ExtractTimeSec}"
                    HeightRequest="40"/>
         </Grid>
@@ -58,6 +68,8 @@
             <Entry Grid.Column="1"
                    Keyboard="Numeric"
                    Text="{Binding ExtractGrams}"
+                   Placeholder="Extraction amount in grams..."
+                   PlaceholderColor="{StaticResource TertiaryColor}"
                    HeightRequest="40"/>
         </Grid>
         <Editor Placeholder="Additional notes..."

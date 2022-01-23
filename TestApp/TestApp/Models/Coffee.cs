@@ -13,6 +13,8 @@ namespace TestApp.Models
         public string RoastStyle { get; set; }
         public DateTime? RoastDate { get; set; }
         public string Notes { get; set; }
+
+        public string DisplayName => $"{Company} - {Name}";
     }
 }
 
