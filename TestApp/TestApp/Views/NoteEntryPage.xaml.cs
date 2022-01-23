@@ -53,10 +53,6 @@ namespace TestApp.Views
                     coffeePicker.SelectedIndex = i;
                 }
             }
-            //coffeePicker.SelectedIndex = coffeePicker.Items
-            //ViewModel.SelectedCoffee = ViewModel.CoffeeOptions
-            //    .Where(c => c.ID == coffeeId)
-            //    .FirstOrDefault();
         }
 
         private void SetViewModelForNewNote()
@@ -102,7 +98,7 @@ namespace TestApp.Views
 
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
-                note.Date = DateTime.UtcNow;
+                note.Date = DateTime.Now;
                 await App.Database.SaveNoteAsync(note);
             }
 
