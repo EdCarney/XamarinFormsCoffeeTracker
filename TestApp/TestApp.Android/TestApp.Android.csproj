@@ -31,7 +31,9 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidHttpClientHandlerType>AndroidClientHandler</AndroidHttpClientHandlerType>
+    <!--<AndroidTlsProvider>Default (Native TLS 1.2+)</AndroidTlsProvider>-->
+    <AndroidLinkTool></AndroidLinkTool>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
