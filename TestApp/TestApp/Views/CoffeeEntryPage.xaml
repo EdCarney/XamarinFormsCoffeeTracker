@@ -25,6 +25,8 @@
                    VerticalTextAlignment="Center"/>
             <Entry Grid.Column="1"
                    Text="{Binding Company}"
+                   Placeholder="Roasting company..."
+                   PlaceholderColor="{StaticResource TertiaryColor}"
                    HeightRequest="40"/>
         </Grid>
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
@@ -35,6 +37,8 @@
                    VerticalTextAlignment="Center"/>
             <Entry Grid.Column="1"
                    Text="{Binding Name}"
+                   Placeholder="Name of roast..."
+                   PlaceholderColor="{StaticResource TertiaryColor}"
                    HeightRequest="40"/>
         </Grid>
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
@@ -45,6 +49,8 @@
                    VerticalTextAlignment="Center"/>
             <Entry Grid.Column="1"
                    Text="{Binding RoastStyle}"
+                   Placeholder="Style of roast..."
+                   PlaceholderColor="{StaticResource TertiaryColor}"
                    HeightRequest="40"/>
         </Grid>
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
