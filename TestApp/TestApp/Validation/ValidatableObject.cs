@@ -9,9 +9,9 @@ namespace TestApp.Validation
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public List<IValidationRule<T>> Validations { get; set; }
+        public List<IValidationRule<T>> Validations { get; set; } = new List<IValidationRule<T>>();
 
-        public List<string> Errors { get; set; }
+        public List<string> Errors { get; set; } = new List<string>();
 
         public bool IsValid { get; set; } = true;
 
