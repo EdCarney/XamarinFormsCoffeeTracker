@@ -40,8 +40,8 @@
      <CollectionView.ItemTemplate>
         <DataTemplate>
             <StackLayout>
-                <Label Text="{Binding Company}" FontSize="Medium" />
-                <Label Text="{Binding Name}" FontSize="Small" TextColor="{StaticResource TertiaryColor}" />
+                <Label Text="{Binding DisplayName}" FontSize="Medium" />
+                <Label Text="{Binding RoastDate}" FontSize="Small" TextColor="{StaticResource TertiaryColor}" />
             </StackLayout>
         </DataTemplate>
      </CollectionView.ItemTemplate>
