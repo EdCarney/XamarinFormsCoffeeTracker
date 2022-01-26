@@ -21,6 +21,11 @@
             <Setter Property="TextColor" Value="{StaticResource SecondaryColor}" />
             <Setter Property="CornerRadius" Value="5" />
         </Style>
+        <Style TargetType="Label" x:Key="ErrorTextStyle">
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
 
     </Application.Resources>
 </Application>

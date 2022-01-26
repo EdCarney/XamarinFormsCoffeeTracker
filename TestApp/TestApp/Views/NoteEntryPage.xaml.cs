@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestApp.Models;
+using TestApp.Validation;
 using TestApp.ViewModels;
 using Xamarin.Forms;
 
@@ -13,16 +13,33 @@ namespace TestApp.Views
     {
         public string ItemId { get; set; }
 
-        public NoteEntryPageViewModel ViewModel { get; set; }
+        private NoteEntryPageViewModel ViewModel { get; set; }
+
+        private Dictionary<Label, IValidatable> LabelValidationObjectMap { get; set; }
 
         public NoteEntryPage()
         {
             InitializeComponent();
         }
 
-        protected async override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
+            SetCancelDeleteBtn();
+            await SetBindingContext();
+            await PopulateCoffeeOptions(); 
+            await SetSelectedCoffee();
+            CreateLabelValidationObjectMap();
+            ResetErrorLabels();
+        }
+
+        private void SetCancelDeleteBtn()
+        {
+            CancelDeleteBtn.Text = ItemId is null ? "Cancel" : "Delete";
+        }
+
+        private async Task SetBindingContext()
+        {
             if (ItemId is null)
             {
                 SetViewModelForNewNote();
@@ -33,28 +50,8 @@ namespace TestApp.Views
             }
 
             BindingContext = ViewModel;
-            await PopulateCoffeeOptions();
-
-            if (ItemId != null)
-            {
-                await SetSelectedCoffee();
-            }
         }
-
-        private async Task SetSelectedCoffee()
-        {
-            int itemId = Convert.ToInt32(ItemId);
-            var note = await App.Database.GetNoteAsync(itemId);
-            int coffeeId = note.CoffeeID;
-            for (int i = 0; i < ViewModel.CoffeeOptions.Count; i++)
-            {
-                if (ViewModel.CoffeeOptions[i].ID == coffeeId)
-                {
-                    coffeePicker.SelectedIndex = i;
-                }
-            }
-        }
-
+        
         private void SetViewModelForNewNote()
         {
             ViewModel = new NoteEntryPageViewModel();
@@ -87,25 +84,78 @@ namespace TestApp.Views
                 .ToList();
             foreach (var opt in coffeeOptionStrings)
             {
-                ViewModel.CoffeeOptions.Add(opt);
+                ViewModel?.CoffeeOptions?.Add(opt);
             }
         }
 
+        private async Task SetSelectedCoffee()
+        {
+            if (ItemId is null)
+            {
+                return;
+            }
+            
+            int itemId = Convert.ToInt32(ItemId);
+            var note = await App.Database.GetNoteAsync(itemId);
+            int coffeeId = note.CoffeeID;
+            for (int i = 0; i < ViewModel.CoffeeOptions.Count; i++)
+            {
+                if (ViewModel.CoffeeOptions[i].ID == coffeeId)
+                {
+                    CoffeePicker.SelectedIndex = i;
+                }
+            }
+        }
+        
+        private void CreateLabelValidationObjectMap()
+        {
+            LabelValidationObjectMap = new Dictionary<Label, IValidatable>
+            {
+                { ExtractGramsErrMsg, ViewModel.ExtractGrams },
+                { ExtractTimeErrMsg, ViewModel.ExtractTimeSec },
+                { DoseErrMsg, ViewModel.DoseGrams },
+                { SelectedCoffeeErrMsg, ViewModel.SelectedCoffee }
+            };
+        }
+
+        private void ResetErrorLabels()
+        {
+            foreach (var label in LabelValidationObjectMap.Keys)
+            {
+                label.IsVisible = false;
+            }
+        }
 
         private async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-            var note = ((NoteEntryPageViewModel)BindingContext).GenerateNote();
+            ResetErrorLabels();
 
-            if (!string.IsNullOrWhiteSpace(note.Text))
+            if (ViewModel.FieldsAreValid())
             {
+                var note = ((NoteEntryPageViewModel)BindingContext).GenerateNote();
                 note.Date = DateTime.Now;
                 await App.Database.SaveNoteAsync(note);
+                await Shell.Current.GoToAsync("..");
             }
-
-            await Shell.Current.GoToAsync("..");
+            else
+            {
+                SetErrorLabels();
+            }
         }
 
-        public async void OnDeleteButtonClicked(object sender, EventArgs e)
+        private void SetErrorLabels()
+        {
+            var invalidLabelValidations = LabelValidationObjectMap
+                .Where(kvp => !kvp.Value.IsValid);
+            
+            foreach (var kvp in invalidLabelValidations)
+            {
+                kvp.Key.IsVisible = true;
+                kvp.Key.Text = kvp.Value.Errors?.FirstOrDefault();
+            }
+        }
+
+        private async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
             var note = ((NoteEntryPageViewModel)BindingContext).GenerateNote();
             await App.Database.DeleteNoteAsync(note);
@@ -114,4 +164,3 @@ namespace TestApp.Views
         }
 	}
 }
-
