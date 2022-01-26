@@ -7,13 +7,15 @@ namespace TestApp.Validation
 
         public bool Check(T value)
         {
-            if (value == null)
+            switch (value)
             {
-                return false;
+                case string strValue:
+                    return !string.IsNullOrWhiteSpace(strValue);
+                case T tValue:
+                    return true;
+                default:
+                    return false;
             }
-
-            string strValue = value as string;
-            return !string.IsNullOrWhiteSpace(strValue);
         }
     }
 }
