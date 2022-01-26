@@ -14,9 +14,13 @@
             <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="PlaceholderColor" Value="{StaticResource TertiaryColor}" />
         </Style>
+
     </ContentPage.Resources>
 
     <StackLayout Margin="{StaticResource PageMargin}">
+        
+        <!-- Selected Coffee -->
+        
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
             <Label Text="Coffee        "
                    FontAttributes="Bold"
@@ -24,15 +28,19 @@
                    HeightRequest="40"
                    VerticalTextAlignment="Center"/>
             <Picker Grid.Column="1"
-                    x:Name="coffeePicker"
+                    x:Name="CoffeePicker"
                     Title="Select coffee..."
                     TitleColor="{StaticResource TertiaryColor}"
                     ItemsSource="{Binding CoffeeOptions}"
                     ItemDisplayBinding="{Binding DisplayName}"
-                    SelectedItem="{Binding SelectedCoffee}"
+                    SelectedItem="{Binding SelectedCoffee.Value}"
                     HeightRequest="40">
             </Picker>
         </Grid>
+        <Label x:Name="SelectedCoffeeErrMsg" Style="{StaticResource ErrorTextStyle}" />
+
+        <!-- Dose -->
+
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
             <Label Text="Dose (g)     "
                    FontAttributes="Bold"
@@ -41,11 +49,16 @@
                    VerticalTextAlignment="Center"/>
             <Entry Grid.Column="1"
                    Keyboard="Numeric"
-                   Text="{Binding DoseGrams}"
+                   Text="{Binding DoseGrams.Value}"
                    Placeholder="Dose amount in grams..."
                    PlaceholderColor="{StaticResource TertiaryColor}"
-                   HeightRequest="40"/>
+                   HeightRequest="40">
+            </Entry>
         </Grid>
+        <Label x:Name="DoseErrMsg" Style="{StaticResource ErrorTextStyle}" />
+
+        <!-- Extraction Time -->
+
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
             <Label Text="Time (s)      "
                    FontAttributes="Bold"
@@ -54,11 +67,16 @@
                    VerticalTextAlignment="Center"/>
             <Entry Grid.Column="1"
                    Keyboard="Numeric"
+                   Text="{Binding ExtractTimeSec.Value}"
                    Placeholder="Extraction time in sec..."
                    PlaceholderColor="{StaticResource TertiaryColor}"
-                   Text="{Binding ExtractTimeSec}"
-                   HeightRequest="40"/>
+                   HeightRequest="40">
+            </Entry>
         </Grid>
+        <Label x:Name="ExtractTimeErrMsg" Style="{StaticResource ErrorTextStyle}" />
+
+        <!-- Extraction Amount -->
+
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
             <Label Text="Amount (g)"
                    FontAttributes="Bold"
@@ -67,11 +85,16 @@
                    VerticalTextAlignment="Center"/>
             <Entry Grid.Column="1"
                    Keyboard="Numeric"
-                   Text="{Binding ExtractGrams}"
+                   Text="{Binding ExtractGrams.Value}"
                    Placeholder="Extraction amount in grams..."
                    PlaceholderColor="{StaticResource TertiaryColor}"
-                   HeightRequest="40"/>
+                   HeightRequest="40">
+            </Entry>
         </Grid>
+        <Label x:Name="ExtractGramsErrMsg" Style="{StaticResource ErrorTextStyle}" />
+
+        <!-- Notes -->
+
         <Editor Placeholder="Additional notes..."
                 Text="{Binding Text}"
                 HeightRequest="100" />
@@ -79,7 +102,9 @@
             <Button Text="Save"
                     Clicked="OnSaveButtonClicked" />
             <Button Grid.Column="1"
-                    Text="Delete"
+                    x:Name="CancelDeleteBtn"
+                    IsVisible="{Binding ItemId}"
+                    BackgroundColor="Red"
                     Clicked="OnDeleteButtonClicked" />
         </Grid>
     </StackLayout>
