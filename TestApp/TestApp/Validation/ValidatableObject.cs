@@ -19,6 +19,14 @@ namespace TestApp.Validation
 
         private T _value;
 
+        public ValidatableObject()
+        {
+            IsValid = true;
+            CleanOnChange = true;
+            Errors = new List<string>();
+            Validations = new List<IValidationRule<T>>();
+        }
+        
         public T Value
         {
             get => _value;
