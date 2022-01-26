@@ -37,8 +37,5 @@
     <Folder Include="Data\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Validation\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Helpers\Behaviors\" />
-    <Folder Include="Helpers\Validators\" />
   </ItemGroup>
 </Project>
