@@ -41,7 +41,9 @@
         <DataTemplate>
             <StackLayout>
                 <Label Text="{Binding DisplayName}" FontSize="Medium" />
-                <Label Text="{Binding RoastDate}" FontSize="Small" TextColor="{StaticResource TertiaryColor}" />
+                <Label Text="{Binding RoastDate, StringFormat='Roasted on {0:MMM dd, yyyy}'}"
+                       FontSize="Small"
+                       TextColor="{StaticResource TertiaryColor}" />
             </StackLayout>
         </DataTemplate>
      </CollectionView.ItemTemplate>
