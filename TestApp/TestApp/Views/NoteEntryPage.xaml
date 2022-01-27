@@ -39,6 +39,24 @@
         </Grid>
         <Label x:Name="SelectedCoffeeErrMsg" Style="{StaticResource ErrorTextStyle}" />
 
+        <!-- Grind Size -->
+        
+        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
+            <Label Text="Grind Size  "
+                   FontAttributes="Bold"
+                   FontSize="Small"
+                   HeightRequest="40"
+                   VerticalTextAlignment="Center"/>
+            <Entry Grid.Column="1"
+                   Keyboard="Numeric"
+                   Text="{Binding GrindSize.Value}"
+                   Placeholder="Grind size used..."
+                   PlaceholderColor="{StaticResource TertiaryColor}"
+                   HeightRequest="40">
+            </Entry>
+        </Grid>
+        <Label x:Name="GrindSizeErrMsg" Style="{StaticResource ErrorTextStyle}" />
+        
         <!-- Dose -->
 
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
@@ -98,12 +116,12 @@
         <Editor Placeholder="Additional notes..."
                 Text="{Binding Text}"
                 HeightRequest="100" />
+        
         <Grid ColumnDefinitions="*,*">
             <Button Text="Save"
                     Clicked="OnSaveButtonClicked" />
             <Button Grid.Column="1"
                     x:Name="CancelDeleteBtn"
-                    IsVisible="{Binding ItemId}"
                     BackgroundColor="Red"
                     Clicked="OnDeleteButtonClicked" />
         </Grid>

@@ -111,6 +111,7 @@ namespace TestApp.Views
         {
             LabelValidationObjectMap = new Dictionary<Label, IValidatable>
             {
+                { GrindSizeErrMsg, ViewModel.GrindSize },
                 { ExtractGramsErrMsg, ViewModel.ExtractGrams },
                 { ExtractTimeErrMsg, ViewModel.ExtractTimeSec },
                 { DoseErrMsg, ViewModel.DoseGrams },
@@ -159,7 +160,6 @@ namespace TestApp.Views
         {
             var note = ((NoteEntryPageViewModel)BindingContext).GenerateNote();
             await App.Database.DeleteNoteAsync(note);
-
             await Shell.Current.GoToAsync("..");
         }
 	}
