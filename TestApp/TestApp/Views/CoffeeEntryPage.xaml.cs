@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestApp.Models;
+using TestApp.Validation;
+using TestApp.ViewModels;
 using Xamarin.Forms;
 
 namespace TestApp.Views
@@ -11,12 +13,11 @@ namespace TestApp.Views
 	[QueryProperty(nameof(ItemId), nameof(ItemId))]
 	public partial class CoffeeEntryPage : ContentPage
 	{
-		public string ItemId
-        {
-			set => LoadNote(value);
-        }
+		public string ItemId { get; set; }
 
-        private Coffee CurrentCoffee => (Coffee)BindingContext;
+        private CoffeeEntryPageViewModel ViewModel { get; set; }
+        
+        private Dictionary<Label, IValidatable> LabelValidationObjectMap { get; set; }
 
         public CoffeeEntryPage()
         {
@@ -24,13 +25,54 @@ namespace TestApp.Views
             BindingContext = new Coffee();
         }
 
-        private async Task LoadNote(string itemId)
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            SetCancelDeleteBtn();
+            await SetBindingContext();
+            CreateLabelValidationObjectMap();
+            ResetErrorLabels();
+        }
+
+        private void SetCancelDeleteBtn()
+        {
+            CancelDeleteBtn.Text = ItemId is null ? "Cancel" : "Delete";
+        }
+
+        private async Task SetBindingContext()
+        {
+            if (ItemId is null)
+            {
+                SetViewModelForNewCoffee();
+            }
+            else
+            {
+                await SetViewModelFromExistingCoffee(ItemId);
+            }
+
+            BindingContext = ViewModel;
+        }
+
+        private void ResetErrorLabels()
+        {
+            foreach (var label in LabelValidationObjectMap.Keys)
+            {
+                label.IsVisible = false;
+            }
+        }
+
+        private void SetViewModelForNewCoffee()
+        {
+            ViewModel = new CoffeeEntryPageViewModel();
+        }
+
+        private async Task SetViewModelFromExistingCoffee(string itemId)
         {
             try
             {
                 int id = Convert.ToInt32(itemId);
                 var coffee = await App.Database.GetCoffeeAsync(id);
-                BindingContext = coffee;
+                ViewModel = CoffeeEntryPageViewModel.Create(coffee);
             }
             catch (Exception)
             {
@@ -38,55 +80,50 @@ namespace TestApp.Views
             }
         }
 
-        public async void OnSaveButtonClicked(object sender, EventArgs e)
+        private void CreateLabelValidationObjectMap()
         {
-            var coffee = CurrentCoffee;
-            await App.Database.SaveCoffeeAsync(coffee);
-            await NavigateBack();
-
-            //if (CoffeeIsValid(coffee))
-            //{
-            //    await App.Database.SaveCoffeeAsync(coffee);
-            //    await NavigateBack();
-            //}
-            //else
-            //{
-            //    await RaiseInvalidCoffeeError(coffee);
-            //}
+            LabelValidationObjectMap = new Dictionary<Label, IValidatable>
+            {
+                { CompanyErrMsg, ViewModel.Company },
+                { NameErrMsg, ViewModel.Name },
+                { RoastStyleErrMsg, ViewModel.RoastStyle },
+                { RoastDateErrMsg, ViewModel.RoastDate }
+            };
         }
 
-        //private async Task RaiseInvalidCoffeeError(Coffee coffee)
-        //{
-        //    string message = $"Entry is invalid. Please address the following:";
-        //    string errors = GetCoffeeErrorText(coffee);
-        //    return await Application.Current.MainPage.DisplayAlert("Warning", message, "OK", "Cancel");
-        //}
+        private async void OnSaveButtonClicked(object sender, EventArgs e)
+        {
+            ResetErrorLabels();
 
-        //private bool CoffeeIsValid(Coffee coffee)
-        //{
-        //    if (!string.IsNullOrWhiteSpace(coffee.Company) &&
-        //        !string.IsNullOrWhiteSpace(coffee.Name) &&
-        //        !string.IsNullOrWhiteSpace(coffee.RoastStyle))
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
+            if (ViewModel.FieldsAreValid())
+            {
+                var coffee = ((CoffeeEntryPageViewModel)BindingContext).GenerateCoffee();
+                await App.Database.SaveCoffeeAsync(coffee);
+                await NavigateBack();
+            }
+            else
+            {
+                SetErrorLabels();
+            }
+        }
 
-        //private string GetCoffeeErrorText(Coffee coffee)
-        //{
-        //    var errorText = new StringBuilder();
+        private void SetErrorLabels()
+        {
+            var invalidLabelValidations = LabelValidationObjectMap
+                .Where(kvp => !kvp.Value.IsValid);
 
-        //    if (CurrentCompanyIsInvalid(coffee))
-        //    {
-        //        errorText.Append("\n")
-        //    }
-        //}
+            foreach (var kvp in invalidLabelValidations)
+            {
+                kvp.Key.IsVisible = true;
+                kvp.Key.Text = kvp.Value.Errors?.FirstOrDefault();
+            }
+        }
 
-        public async void OnDeleteButtonClicked(object sender, EventArgs e)
+        private async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
             var notes = await App.Database.GetNotesAsync();
-            var notesWithCurrentCoffee = notes.Where(n => n.CoffeeID == CurrentCoffee.ID).ToList();
+            int coffeeId = ((CoffeeEntryPageViewModel) BindingContext).ID;
+            var notesWithCurrentCoffee = notes.Where(n => n.CoffeeID == coffeeId).ToList();
             if (notesWithCurrentCoffee.Any())
             {
                 await DeleteCoffeeWithExistingNotes(notesWithCurrentCoffee);
@@ -123,7 +160,8 @@ namespace TestApp.Views
 
         private async Task DeleteCoffee()
         {
-            await App.Database.DeleteCoffeeAsync(CurrentCoffee);
+            var coffee = ((CoffeeEntryPageViewModel)BindingContext).GenerateCoffee();
+            await App.Database.DeleteCoffeeAsync(coffee);
             await NavigateBack();
         }
 
