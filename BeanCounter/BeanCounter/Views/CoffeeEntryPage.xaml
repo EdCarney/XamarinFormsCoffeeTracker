@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="BeanCounter.Views.CoffeeEntryPage"
+    Title="Coffee Entry">
+
+    <ContentPage.Resources>
+        <Style TargetType="{x:Type Editor}">
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource TertiaryColor}" />
+        </Style>
+        <Style TargetType="{x:Type Entry}">
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource TertiaryColor}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout Margin="{StaticResource PageMargin}">
+        
+        <!-- Company -->
+        
+        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
+            <Label Text="Company   "
+                   FontAttributes="Bold"
+                   FontSize="Small"
+                   HeightRequest="40"
+                   VerticalTextAlignment="Center"/>
+            <Entry Grid.Column="1"
+                   Text="{Binding Company.Value}"
+                   Placeholder="Roasting company..."
+                   PlaceholderColor="{StaticResource TertiaryColor}"
+                   HeightRequest="40"/>
+        </Grid>
+        <Label x:Name="CompanyErrMsg" Style="{StaticResource ErrorTextStyle}" />
+        
+        <!-- Name -->
+        
+        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
+            <Label Text="Name          "
+                   FontAttributes="Bold"
+                   FontSize="Small"
+                   HeightRequest="40"
+                   VerticalTextAlignment="Center"/>
+            <Entry Grid.Column="1"
+                   Text="{Binding Name.Value}"
+                   Placeholder="Name of roast..."
+                   PlaceholderColor="{StaticResource TertiaryColor}"
+                   HeightRequest="40"/>
+        </Grid>
+        <Label x:Name="NameErrMsg" Style="{StaticResource ErrorTextStyle}" />
+        
+        <!-- Roast Style -->
+        
+        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
+            <Label Text="Roast Style"
+                   FontAttributes="Bold"
+                   FontSize="Small"
+                   HeightRequest="40"
+                   VerticalTextAlignment="Center"/>
+            <Entry Grid.Column="1"
+                   Text="{Binding RoastStyle.Value}"
+                   Placeholder="Style of roast..."
+                   PlaceholderColor="{StaticResource TertiaryColor}"
+                   HeightRequest="40"/>
+        </Grid>
+        <Label x:Name="RoastStyleErrMsg" Style="{StaticResource ErrorTextStyle}" />
+        
+        <!-- Roast Date -->
+        
+        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
+            <Label Text="Roast Date "
+                   FontAttributes="Bold"
+                   FontSize="Small"
+                   HeightRequest="40"
+                   VerticalTextAlignment="Center"/>
+            <DatePicker Grid.Column="1"
+                        Date="{Binding RoastDate.Value}"
+                        Format="dd MMM yyyy"
+                        HeightRequest="40"/>
+        </Grid>
+        <Label x:Name="RoastDateErrMsg" Style="{StaticResource ErrorTextStyle}" />
+        
+        <!-- Notes -->
+        
+        <Editor Placeholder="Additional notes..."
+                Text="{Binding Notes}"
+                HeightRequest="100" />
+        
+        <Grid ColumnDefinitions="*,*">
+            <Button Text="Save"
+                    BackgroundColor="Green"
+                    Clicked="OnSaveButtonClicked"
+                    HeightRequest="30"/>
+            <Button Grid.Column="1"
+                    x:Name="CancelDeleteBtn"
+                    BackgroundColor="Red"
+                    HeightRequest="30"
+                    Clicked="OnDeleteButtonClicked" />
+        </Grid>
+    </StackLayout>
+</ContentPage>
+
