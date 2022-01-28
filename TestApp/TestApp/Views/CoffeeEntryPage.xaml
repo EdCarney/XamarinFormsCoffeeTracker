@@ -89,10 +89,13 @@
         
         <Grid ColumnDefinitions="*,*">
             <Button Text="Save"
-                    Clicked="OnSaveButtonClicked" />
+                    BackgroundColor="Green"
+                    Clicked="OnSaveButtonClicked"
+                    HeightRequest="30"/>
             <Button Grid.Column="1"
                     x:Name="CancelDeleteBtn"
                     BackgroundColor="Red"
+                    HeightRequest="30"
                     Clicked="OnDeleteButtonClicked" />
         </Grid>
     </StackLayout>
