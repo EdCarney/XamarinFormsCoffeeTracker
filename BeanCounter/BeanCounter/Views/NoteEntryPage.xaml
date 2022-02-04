@@ -5,36 +5,19 @@
     x:Class="BeanCounter.Views.NoteEntryPage"
     Title="Shot Log Entry">
 
-    <ContentPage.Resources>
-        <Style TargetType="{x:Type Editor}">
-            <Setter Property="BackgroundColor" Value="White" />
-            <Setter Property="PlaceholderColor" Value="{StaticResource TertiaryColor}" />
-        </Style>
-        <Style TargetType="{x:Type Entry}">
-            <Setter Property="BackgroundColor" Value="White" />
-            <Setter Property="PlaceholderColor" Value="{StaticResource TertiaryColor}" />
-        </Style>
-
-    </ContentPage.Resources>
-
     <StackLayout Margin="{StaticResource PageMargin}">
         
         <!-- Selected Coffee -->
         
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Coffee        "
-                   FontAttributes="Bold"
-                   FontSize="Small"
-                   HeightRequest="40"
-                   VerticalTextAlignment="Center"/>
+            <Label Text="Coffee        " Style="{StaticResource FormEntryLabel}" />
             <Picker Grid.Column="1"
                     x:Name="CoffeePicker"
                     Title="Select coffee..."
-                    TitleColor="{StaticResource TertiaryColor}"
                     ItemsSource="{Binding CoffeeOptions}"
                     ItemDisplayBinding="{Binding DisplayName}"
                     SelectedItem="{Binding SelectedCoffee.Value}"
-                    HeightRequest="40">
+                    Style="{StaticResource FormPicker}">
             </Picker>
         </Grid>
         <Label x:Name="SelectedCoffeeErrMsg" Style="{StaticResource ErrorTextStyle}" />
@@ -42,17 +25,12 @@
         <!-- Grind Size -->
         
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Grind Size  "
-                   FontAttributes="Bold"
-                   FontSize="Small"
-                   HeightRequest="40"
-                   VerticalTextAlignment="Center"/>
+            <Label Text="Grind Size  " Style="{StaticResource FormEntryLabel}" />
             <Entry Grid.Column="1"
                    Keyboard="Numeric"
                    Text="{Binding GrindSize.Value}"
                    Placeholder="Grind size used..."
-                   PlaceholderColor="{StaticResource TertiaryColor}"
-                   HeightRequest="40">
+                   Style="{StaticResource FormEntry}">
             </Entry>
         </Grid>
         <Label x:Name="GrindSizeErrMsg" Style="{StaticResource ErrorTextStyle}" />
@@ -60,17 +38,12 @@
         <!-- Dose -->
 
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Dose (g)     "
-                   FontAttributes="Bold"
-                   FontSize="Small"
-                   HeightRequest="40"
-                   VerticalTextAlignment="Center"/>
+            <Label Text="Dose (g)     " Style="{StaticResource FormEntryLabel}" />
             <Entry Grid.Column="1"
                    Keyboard="Numeric"
                    Text="{Binding DoseGrams.Value}"
                    Placeholder="Dose amount in grams..."
-                   PlaceholderColor="{StaticResource TertiaryColor}"
-                   HeightRequest="40">
+                   Style="{StaticResource FormEntry}">
             </Entry>
         </Grid>
         <Label x:Name="DoseErrMsg" Style="{StaticResource ErrorTextStyle}" />
@@ -78,17 +51,12 @@
         <!-- Extraction Time -->
 
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Time (s)      "
-                   FontAttributes="Bold"
-                   FontSize="Small"
-                   HeightRequest="40"
-                   VerticalTextAlignment="Center"/>
+            <Label Text="Time (s)      " Style="{StaticResource FormEntryLabel}" />
             <Entry Grid.Column="1"
                    Keyboard="Numeric"
                    Text="{Binding ExtractTimeSec.Value}"
                    Placeholder="Extraction time in sec..."
-                   PlaceholderColor="{StaticResource TertiaryColor}"
-                   HeightRequest="40">
+                   Style="{StaticResource FormEntry}">
             </Entry>
         </Grid>
         <Label x:Name="ExtractTimeErrMsg" Style="{StaticResource ErrorTextStyle}" />
@@ -96,17 +64,12 @@
         <!-- Extraction Amount -->
 
         <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Amount (g)"
-                   FontAttributes="Bold"
-                   FontSize="Small"
-                   HeightRequest="40"
-                   VerticalTextAlignment="Center"/>
+            <Label Text="Amount (g)"  Style="{StaticResource FormEntryLabel}"/>
             <Entry Grid.Column="1"
                    Keyboard="Numeric"
                    Text="{Binding ExtractGrams.Value}"
                    Placeholder="Extraction amount in grams..."
-                   PlaceholderColor="{StaticResource TertiaryColor}"
-                   HeightRequest="40">
+                   Style="{StaticResource FormEntry}">
             </Entry>
         </Grid>
         <Label x:Name="ExtractGramsErrMsg" Style="{StaticResource ErrorTextStyle}" />
@@ -115,18 +78,18 @@
 
         <Editor Placeholder="Additional notes..."
                 Text="{Binding Text}"
-                HeightRequest="100" />
+                Style="{StaticResource FormEditor}" />
         
         <Grid ColumnDefinitions="*,*">
-            <Button Text="Save"
-                    BackgroundColor="Green"
-                    HeightRequest="40"
-                    Clicked="OnSaveButtonClicked" />
-            <Button Grid.Column="1"
-                    x:Name="CancelDeleteBtn"
+            <Button x:Name="CancelDeleteBtn"
                     BackgroundColor="Red"
                     HeightRequest="40"
                     Clicked="OnDeleteButtonClicked" />
+            <Button Grid.Column="1"
+                    Text="Save"
+                    BackgroundColor="Green"
+                    HeightRequest="40"
+                    Clicked="OnSaveButtonClicked" />
         </Grid>
     </StackLayout>
 </ContentPage>

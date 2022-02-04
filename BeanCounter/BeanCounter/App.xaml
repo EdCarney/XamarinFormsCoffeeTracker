@@ -19,13 +19,47 @@
             <Setter Property="FontSize" Value="Small" />
             <Setter Property="BackgroundColor" Value="{StaticResource AppPrimaryColor}"/>
             <Setter Property="TextColor" Value="{StaticResource SecondaryColor}" />
-            <Setter Property="CornerRadius" Value="7" />
+            <Setter Property="CornerRadius" Value="10" />
         </Style>
         <Style TargetType="Label" x:Key="ErrorTextStyle">
             <Setter Property="FontSize" Value="Small" />
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="TextColor" Value="Red" />
         </Style>
-
+        <Style TargetType="Label" x:Key="FormEntryLabel">
+            <Setter Property="TextColor" Value="{StaticResource TertiaryColor}" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="HeightRequest" Value="40" />
+        </Style>
+        <Style TargetType="Entry" x:Key="FormEntry">
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource TertiaryColor}" />
+            <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="HeightRequest" Value="40" />
+        </Style>
+        <Style TargetType="Picker" x:Key="FormPicker">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="TitleColor" Value="{StaticResource TertiaryColor}" />
+            <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="HeightRequest" Value="40" />
+        </Style>
+        <Style TargetType="DatePicker" x:Key="FormDatePicker">
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="Format" Value="dd MMM yyyy" />
+            <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="HeightRequest" Value="40" />
+        </Style>
+        <Style TargetType="Editor" x:Key="FormEditor">
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource TertiaryColor}" />
+            <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="HeightRequest" Value="100" />
+        </Style>
     </Application.Resources>
 </Application>
