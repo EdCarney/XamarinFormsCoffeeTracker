@@ -160,8 +160,11 @@ namespace BeanCounter.Views
 
         private async Task DeleteCoffee()
         {
-            var coffee = ((CoffeeEntryPageViewModel)BindingContext).GenerateCoffee();
-            await App.Database.DeleteCoffeeAsync(coffee);
+            if (ItemId != null)
+            {
+                var coffee = ((CoffeeEntryPageViewModel)BindingContext).GenerateCoffee();
+                await App.Database.DeleteCoffeeAsync(coffee);
+            }
             await NavigateBack();
         }
 

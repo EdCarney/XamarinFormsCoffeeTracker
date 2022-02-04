@@ -136,7 +136,7 @@ namespace BeanCounter.Views
                 var note = ((NoteEntryPageViewModel)BindingContext).GenerateNote();
                 note.Date = DateTime.Now;
                 await App.Database.SaveNoteAsync(note);
-                await Shell.Current.GoToAsync("..");
+                await NavigateBack();
             }
             else
             {
@@ -158,9 +158,17 @@ namespace BeanCounter.Views
 
         private async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
-            var note = ((NoteEntryPageViewModel)BindingContext).GenerateNote();
-            await App.Database.DeleteNoteAsync(note);
+            if (ItemId != null)
+            {
+                var note = ((NoteEntryPageViewModel)BindingContext).GenerateNote();
+                await App.Database.DeleteNoteAsync(note);
+            }
+            await NavigateBack();
+        }
+
+        private async Task NavigateBack()
+        {
             await Shell.Current.GoToAsync("..");
         }
-	}
+    }
 }
