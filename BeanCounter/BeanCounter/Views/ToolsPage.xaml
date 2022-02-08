@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="BeanCounter.Views.ToolsPage"
+    Title="Tools">
+
+    <StackLayout Margin="{StaticResource PageMargin}">
+
+        <Label Text="Water Amount" Style="{StaticResource FormEntryLabel}" />
+        <Grid ColumnDefinitions="3*,*">
+            <Entry Style="{StaticResource FormEntry}"
+                   x:Name="WaterAmountEntry"
+                   Keyboard="Numeric"
+                   Placeholder="Amount of water..."
+                   PropertyChanged="WaterAmountChanged"/>
+            <Picker Grid.Column="1"
+                    x:Name="WaterUnitPicker"
+                    SelectedIndexChanged="WaterUnitPicker_SelectedIndexChanged"
+                    Style="{StaticResource FormPicker}"/>
+        </Grid>
+
+        <Label Text="Coffee Amout" Style="{StaticResource FormEntryLabel}" />
+        <Grid ColumnDefinitions="3*,*">
+            <Entry Style="{StaticResource FormEntry}"
+                   x:Name="CoffeeAmountEntry"
+                   Keyboard="Numeric"
+                   Placeholder="Amount of coffee..."
+                   PropertyChanged="CoffeeAmountChanged"/>
+            <Picker Grid.Column="1"
+                    x:Name="CoffeeUnitPicker"
+                    SelectedIndexChanged="CoffeeUnitPicker_SelectedIndexChanged"
+                    Style="{StaticResource FormPicker}"/>
+        </Grid>
+
+        <Button x:Name="ClearBtn"
+                Text="Clear"
+                BackgroundColor="Red"
+                HeightRequest="40"
+                Clicked="OnClearButtonClicked" />
+
+    </StackLayout>
+
+</ContentPage>

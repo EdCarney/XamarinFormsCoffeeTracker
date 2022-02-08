@@ -20,6 +20,8 @@
                       ContentTemplate="{DataTemplate views:NotesPage}" />
         <ShellContent Title="Coffee" Icon="icon_feed.png"
                       ContentTemplate="{DataTemplate views:CoffeesPage}" />
+        <ShellContent Title="Tools" Icon="icon_weights.png"
+                      ContentTemplate="{DataTemplate views:ToolsPage}" />
         <ShellContent Title="About" Icon="icon_about.png"
                       ContentTemplate="{DataTemplate views:AboutPage}" />
     </TabBar>

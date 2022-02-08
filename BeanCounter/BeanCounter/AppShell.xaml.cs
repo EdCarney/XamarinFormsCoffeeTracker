@@ -12,6 +12,7 @@ namespace BeanCounter
 			InitializeComponent();
 			Routing.RegisterRoute(nameof(NoteEntryPage), typeof(NoteEntryPage));
 			Routing.RegisterRoute(nameof(CoffeeEntryPage), typeof(CoffeeEntryPage));
+			Routing.RegisterRoute(nameof(ToolsPage), typeof(ToolsPage));
 		}
 	}
 }
