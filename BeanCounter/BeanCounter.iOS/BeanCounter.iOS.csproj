@@ -90,6 +90,18 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-76%402x.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-76.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-83_5%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-83_5%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-20.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-20%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29%402x-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
