@@ -9,73 +9,64 @@
         
         <!-- Selected Coffee -->
         
-        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Coffee        " Style="{StaticResource FormEntryLabel}" />
-            <Picker Grid.Column="1"
-                    x:Name="CoffeePicker"
-                    Title="Select coffee..."
-                    ItemsSource="{Binding CoffeeOptions}"
-                    ItemDisplayBinding="{Binding DisplayName}"
-                    SelectedItem="{Binding SelectedCoffee.Value}"
-                    Style="{StaticResource FormPicker}">
-            </Picker>
-        </Grid>
+        <Label Text="Coffee" Style="{StaticResource FormEntryLabel}" />
+        <Picker Grid.Column="1"
+                x:Name="CoffeePicker"
+                Title="Select coffee..."
+                ItemsSource="{Binding CoffeeOptions}"
+                ItemDisplayBinding="{Binding DisplayName}"
+                SelectedItem="{Binding SelectedCoffee.Value}"
+                Style="{StaticResource FormPicker}">
+        </Picker>
         <Label x:Name="SelectedCoffeeErrMsg" Style="{StaticResource ErrorTextStyle}" />
 
         <!-- Grind Size -->
         
-        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Grind Size  " Style="{StaticResource FormEntryLabel}" />
-            <Entry Grid.Column="1"
-                   Keyboard="Numeric"
-                   Text="{Binding GrindSize.Value}"
-                   Placeholder="Grind size used..."
-                   Style="{StaticResource FormEntry}">
-            </Entry>
-        </Grid>
+        <Label Text="Grind Size" Style="{StaticResource FormEntryLabel}" />
+        <Entry Grid.Column="1"
+                Keyboard="Numeric"
+                Text="{Binding GrindSize.Value}"
+                Placeholder="Grind size used..."
+                Style="{StaticResource FormEntry}">
+        </Entry>
         <Label x:Name="GrindSizeErrMsg" Style="{StaticResource ErrorTextStyle}" />
         
         <!-- Dose -->
 
-        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Dose (g)     " Style="{StaticResource FormEntryLabel}" />
-            <Entry Grid.Column="1"
-                   Keyboard="Numeric"
-                   Text="{Binding DoseGrams.Value}"
-                   Placeholder="Dose amount in grams..."
-                   Style="{StaticResource FormEntry}">
-            </Entry>
-        </Grid>
+        <Label Text="Dose (g)" Style="{StaticResource FormEntryLabel}" />
+        <Entry Grid.Column="1"
+                Keyboard="Numeric"
+                Text="{Binding DoseGrams.Value}"
+                Placeholder="Dose amount in grams..."
+                Style="{StaticResource FormEntry}">
+        </Entry>
         <Label x:Name="DoseErrMsg" Style="{StaticResource ErrorTextStyle}" />
 
         <!-- Extraction Time -->
 
-        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Time (s)      " Style="{StaticResource FormEntryLabel}" />
-            <Entry Grid.Column="1"
-                   Keyboard="Numeric"
-                   Text="{Binding ExtractTimeSec.Value}"
-                   Placeholder="Extraction time in sec..."
-                   Style="{StaticResource FormEntry}">
-            </Entry>
-        </Grid>
+        <Label Text="Time (s)" Style="{StaticResource FormEntryLabel}" />
+        <Entry Grid.Column="1"
+                Keyboard="Numeric"
+                Text="{Binding ExtractTimeSec.Value}"
+                Placeholder="Extraction time in sec..."
+                Style="{StaticResource FormEntry}">
+        </Entry>
         <Label x:Name="ExtractTimeErrMsg" Style="{StaticResource ErrorTextStyle}" />
 
         <!-- Extraction Amount -->
 
-        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Amount (g)"  Style="{StaticResource FormEntryLabel}"/>
-            <Entry Grid.Column="1"
-                   Keyboard="Numeric"
-                   Text="{Binding ExtractGrams.Value}"
-                   Placeholder="Extraction amount in grams..."
-                   Style="{StaticResource FormEntry}">
-            </Entry>
-        </Grid>
+        <Label Text="Amount (g)"  Style="{StaticResource FormEntryLabel}"/>
+        <Entry Grid.Column="1"
+                Keyboard="Numeric"
+                Text="{Binding ExtractGrams.Value}"
+                Placeholder="Extraction amount in grams..."
+                Style="{StaticResource FormEntry}">
+        </Entry>
         <Label x:Name="ExtractGramsErrMsg" Style="{StaticResource ErrorTextStyle}" />
 
         <!-- Notes -->
 
+        <Label Text="Notes"  Style="{StaticResource FormEntryLabel}"/>
         <Editor Placeholder="Additional notes..."
                 Text="{Binding Text}"
                 Style="{StaticResource FormEditor}" />

@@ -11,11 +11,6 @@ namespace BeanCounter.Views
 		{
 			InitializeComponent ();
 		}
-
-		public void OnButtonClicked(object sender, EventArgs e)
-        {
-			Launcher.OpenAsync("https://aka.ms/xamarin-quickstart");
-        }
 	}
 }
 

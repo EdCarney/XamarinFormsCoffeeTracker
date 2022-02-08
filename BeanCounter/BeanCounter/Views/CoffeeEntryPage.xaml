@@ -9,49 +9,42 @@
         
         <!-- Company -->
         
-        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Company   " Style="{StaticResource FormEntryLabel}" />
-            <Entry Grid.Column="1"
-                   Style="{StaticResource FormEntry}"
-                   Text="{Binding Company.Value}"
-                   Placeholder="Roasting company..." />
-        </Grid>
+        <Label Text="Company" Style="{StaticResource FormEntryLabel}" />
+        <Entry Grid.Column="1"
+                Style="{StaticResource FormEntry}"
+                Text="{Binding Company.Value}"
+                Placeholder="Roasting company..." />
         <Label x:Name="CompanyErrMsg" Style="{StaticResource ErrorTextStyle}" />
         
         <!-- Name -->
-        
-        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Name         " Style="{StaticResource FormEntryLabel}" />
-            <Entry Grid.Column="1"
-                   Style="{StaticResource FormEntry}"
-                   Text="{Binding Name.Value}"
-                   Placeholder="Name of roast..." />
-        </Grid>
+
+        <Label Text="Name" Style="{StaticResource FormEntryLabel}" />
+        <Entry Grid.Column="1"
+                Style="{StaticResource FormEntry}"
+                Text="{Binding Name.Value}"
+                Placeholder="Name of roast..." />
         <Label x:Name="NameErrMsg" Style="{StaticResource ErrorTextStyle}" />
         
         <!-- Roast Style -->
         
-        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Roast Style" Style="{StaticResource FormEntryLabel}" />
-            <Entry Grid.Column="1"
-                   Style="{StaticResource FormEntry}"
-                   Text="{Binding RoastStyle.Value}"
-                   Placeholder="Style of roast..." />
-        </Grid>
+        <Label Text="Roast Style" Style="{StaticResource FormEntryLabel}" />
+        <Entry Grid.Column="1"
+                Style="{StaticResource FormEntry}"
+                Text="{Binding RoastStyle.Value}"
+                Placeholder="Style of roast..." />
         <Label x:Name="RoastStyleErrMsg" Style="{StaticResource ErrorTextStyle}" />
         
         <!-- Roast Date -->
         
-        <Grid HeightRequest="40" ColumnDefinitions="Auto,*">
-            <Label Text="Roast Date " Style="{StaticResource FormEntryLabel}" />
-            <DatePicker Grid.Column="1"
-                        Date="{Binding RoastDate.Value}"
-                        Style="{StaticResource FormDatePicker}"/>
-        </Grid>
+        <Label Text="Roast Date" Style="{StaticResource FormEntryLabel}" />
+        <DatePicker Grid.Column="1"
+                    Date="{Binding RoastDate.Value}"
+                    Style="{StaticResource FormDatePicker}"/>
         <Label x:Name="RoastDateErrMsg" Style="{StaticResource ErrorTextStyle}" />
         
         <!-- Notes -->
-        
+
+        <Label Text="Notes" Style="{StaticResource FormEntryLabel}" />
         <Editor Placeholder="Additional notes..."
                 Text="{Binding Notes}"
                 Style="{StaticResource FormEditor}" />
