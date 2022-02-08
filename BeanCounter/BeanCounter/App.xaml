@@ -22,16 +22,16 @@
             <Setter Property="CornerRadius" Value="10" />
         </Style>
         <Style TargetType="Label" x:Key="ErrorTextStyle">
-            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="FontSize" Value="Micro" />
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="TextColor" Value="Red" />
         </Style>
         <Style TargetType="Label" x:Key="FormEntryLabel">
             <Setter Property="TextColor" Value="{StaticResource TertiaryColor}" />
             <Setter Property="FontAttributes" Value="Bold" />
-            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="FontSize" Value="Micro" />
             <Setter Property="VerticalTextAlignment" Value="Center" />
-            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="HeightRequest" Value="15" />
         </Style>
         <Style TargetType="Entry" x:Key="FormEntry">
             <Setter Property="BackgroundColor" Value="White" />
