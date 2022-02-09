@@ -40,7 +40,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
-                        <Label Text="{Binding Date, StringFormat='{0:ddd, MMMM dd} - {0:hh:ss tt}'}"
+                        <Label Text="{Binding Date, StringFormat='{0:ddd, MMMM dd} - {0:hh:mm tt}'}"
                                 FontSize="Medium"
                                 TextColor="Black" />
                         <Label Text="{Binding CoffeeDisplayName}"
